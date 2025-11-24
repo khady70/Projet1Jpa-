@@ -1,20 +1,28 @@
 package sn.edu.isepat.tic.dfe.p6.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "profil")
 public class Profil {
-    private long id;
+    @Id
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false)
     private String bio;
+
+
     private String telephone;
+
     private String photo;
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -16,17 +16,10 @@ public class Utilisateur {
     @Column(unique = true , length = 255, nullable = false)
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "profil_id")
-    Profil  Profil;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Profil  profil;
 
-    public Profil getProfil() {
-        return Profil;
-    }
 
-    public void setProfil(Profil profil) {
-        Profil = profil;
-    }
 
     public long getId() {
         return id;
@@ -50,5 +43,15 @@ public class Utilisateur {
 
     public void setEmail(String email) {
         this.email = email;
+
+
+    }
+
+    public Profil getProfil() {
+        return profil;
+    }
+
+    public void setProfil(Profil profil) {
+        this.profil = profil;
     }
 }
