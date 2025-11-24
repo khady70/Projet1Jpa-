@@ -1,17 +1,75 @@
 package sn.edu.isepat.tic.dfe.p6;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import sn.edu.isepat.tic.dfe.p6.entities.Categorie;
+import sn.edu.isepat.tic.dfe.p6.entities.Produit;
+import sn.edu.isepat.tic.dfe.p6.entities.Profil;
+import sn.edu.isepat.tic.dfe.p6.entities.Utilisateur;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+  public   static void main(String[] args) {
+      EntityManagerFactory emf= Persistence.createEntityManagerFactory("dfePU");
+      EntityManager em=emf.createEntityManager();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+
+      Utilisateur user=new Utilisateur();
+      user.setId(1);
+      user.setNom("khady");
+      user.setEmail("khady@mail.com");
+
+
+
+      Profil profil = new Profil();
+      profil.setId(2);
+      profil.setBio("se connecter");
+      profil.setTelephone("7x xxx xx xx");
+      profil.setPhoto("image");
+
+     Categorie electronique = new Categorie();
+     electronique.setNom("Électronique");
+     electronique.setDescription("Appareils high-tech");
+
+
+      Produit p1 = new Produit();
+      p1.setNom("Laptop HP");
+      p1.setPrix(899.99);
+      p1.setStock( 15);
+      Produit p2 = new Produit();
+      p2.setNom("Souris sans fil");
+      p2.setPrix(29.99);
+      p2.setStock(50);
+
+      Produit p3 = new Produit();
+      p3.setNom("Clavier mecanique");
+      p3.setPrix(149.99);
+      p3.setStock(20);
+
+
+      em.persist(electronique);
+
+
+
+
+      user.setProfil(profil);
+
+
+
+
+      em.getTransaction().begin();
+      em.persist(user);
+
+      em.persist(electronique);
+
+
+
+      em.persist(electronique);
+
+      em.getTransaction().commit();
+      em.close();
+      emf.close();
     }
 }
