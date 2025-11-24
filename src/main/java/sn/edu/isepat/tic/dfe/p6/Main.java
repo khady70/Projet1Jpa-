@@ -12,7 +12,7 @@ import sn.edu.isepat.tic.dfe.p6.entities.Utilisateur;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
   public   static void main(String[] args) {
-      EntityManagerFactory emf= Persistence.createEntityManagerFactory("dfePU");
+      EntityManagerFactory emf= Persistence.createEntityManagerFactory("gestionProduitsPU");
       EntityManager em=emf.createEntityManager();
 
 
