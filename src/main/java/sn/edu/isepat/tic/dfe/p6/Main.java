@@ -12,7 +12,7 @@ import sn.edu.isepat.tic.dfe.p6.entities.Utilisateur;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
   public   static void main(String[] args) {
-      EntityManagerFactory emf= Persistence.createEntityManagerFactory("Projet1PU");
+      EntityManagerFactory emf= Persistence.createEntityManagerFactory("gestionProduitsPU");
       EntityManager em=emf.createEntityManager();
 
 
@@ -61,13 +61,15 @@ public class Main {
 
       em.getTransaction().begin();
       em.persist(user);
-      em.persist(profil);
 
       em.persist(electronique);
       em.persist(p1);
       em.persist(p2);
       em.persist(p3);
 
+
+
+      em.persist(electronique);
 
       em.getTransaction().commit();
       em.close();

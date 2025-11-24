@@ -8,12 +8,12 @@ public class Utilisateur {
     @Id
 
     @GeneratedValue( strategy = GenerationType.IDENTITY)//permet d'auto_incrementer
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false)
     private String nom;
 
-    @Column(unique = true , nullable = false)
+    @Column(unique = true , length = 255, nullable = false)
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -32,7 +32,7 @@ public class Utilisateur {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
