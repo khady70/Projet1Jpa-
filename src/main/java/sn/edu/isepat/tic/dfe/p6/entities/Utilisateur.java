@@ -3,12 +3,17 @@ package sn.edu.isepat.tic.dfe.p6.entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
     @Id
-    private long id;
+
+    @GeneratedValue( strategy = GenerationType.IDENTITY)//permet d'auto_incrementer
+    private Long id;
+
+    @Column(nullable = false)
     private String nom;
 
-    @Column(unique = true)
+    @Column(unique = true , nullable = false)
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
