@@ -1,20 +1,28 @@
 package sn.edu.isepat.tic.dfe.p6.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Categorie {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nom;
     private String description;
 
     @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
     private List<Produit> produits = new ArrayList<>();
+
+    // 🔥 Méthode à créer
+    public void ajouterProduit(Produit p) {
+        produits.add(p);         // Ajouter le produit dans la liste
+        p.setCategorie(this);    // Assurer la bidirectionnalité
+    }
+
 
     public List<Produit> getProduits() {
         return produits;

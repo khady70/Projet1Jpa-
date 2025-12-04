@@ -4,12 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import java.util.List;
+
 @Entity
 public class Produit {
     private Long id;
     private String nom;
     private double prix;
     private int stock;
+    public List<Commande> getCommandes(){return getCommandes();}
+    public void setCommandes(List<Commande> commandes){this.getCommandes();}
 
 
     @ManyToOne

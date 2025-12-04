@@ -14,7 +14,6 @@ public class TestAutoincremente {
 
 
         em.getTransaction().begin();
-        em.getTransaction().begin();
         Utilisateur u1=new Utilisateur();
         u1.setNom("khady");
         u1.setEmail("khady@mail.com");
@@ -32,7 +31,7 @@ public class TestAutoincremente {
         u2.setNom("Astou");
         u2.setEmail("astou@mail.com");
         em.persist(u2);
-       em.remove(u1);//supprime l'entitie dans la base
+        em.remove(u1);//supprime l'entitie dans la base
         em.getTransaction().commit();
 
 
