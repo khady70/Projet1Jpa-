@@ -3,10 +3,12 @@ package sn.edu.isepat.tic.dfe.p6.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 import java.util.List;
 
 @Entity
+@Table(name = "Produit")
 public class Produit {
     private Long id;
     private String nom;
